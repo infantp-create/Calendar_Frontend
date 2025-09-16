@@ -1,0 +1,272 @@
+/* ===== Global Reset ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+html, body, #root {
+  height: 100%;
+  width: 100%;
+}
+
+/* ===== Page Background ===== */
+body .light-mode {
+  background: linear-gradient(135deg, #e0e7ff, #f0f4f8);
+  color: #222;
+}
+body .dark-mode {
+  background: linear-gradient(135deg, #2b2a2a, #1e1e1e);
+  color: #f5f5f5;
+}
+
+/* ===== Center Card ===== */
+.auth-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 2rem;
+}
+
+.auth-card {
+  display: flex;
+  /* width: 700px;
+  height: 450px; */
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+  transition: all 0.4s ease;
+}
+
+/* ===== Left Side ===== */
+.auth-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  text-align: center;
+  position: relative;
+  transition: all 0.4s ease;
+}
+.auth-left h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: var(--left-heading-color);
+}
+.auth-left p {
+  font-size: 1rem;
+  opacity: 0.85;
+  line-height: 1.5;
+}
+/* Calendar illustration */
+.auth-left::before {
+  content: "";
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  width: 200%;
+  height: 200%;
+  background-image: url('https://www.svgrepo.com/show/354580/calendar.svg');
+  background-repeat: repeat;
+  background-size: 100px 100px;
+  opacity: 0.05;
+  pointer-events: none;
+  z-index: 0;
+  filter: var(--calendar-filter);
+}
+
+/* ===== Right Side ===== */
+.auth-right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  position: relative;
+  transition: all 0.4s ease;
+}
+
+/* Theme Toggle */
+.theme-toggle {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+.theme-toggle:hover {
+  transform: rotate(20deg);
+}
+
+/* Form Container */
+.auth-container {
+  width: 100%;
+  max-width: 360px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Form Header */
+.auth-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.auth-header h1 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+.auth-header p {
+  font-size: 0.95rem;
+  opacity: 0.85;
+}
+
+/* Forms */
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.form-group label {
+  display: block;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+.input-group {
+  display: flex;
+  align-items: center;
+  border-radius: 12px;
+  padding: 0.7rem;
+  transition: all 0.3s ease;
+}
+.input-group input {
+  border: none;
+  outline: none;
+  flex: 1;
+  padding: 0.7rem;
+  background: transparent;
+  font-size: 0.95rem;
+}
+.input-icon {
+  margin-right: 0.6rem;
+}
+
+/* Buttons */
+.auth-button {
+  border: none;
+  border-radius: 12px;
+  padding: 0.9rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Footer */
+.auth-footer {
+  text-align: center;
+  margin-top: 1.5rem;
+}
+.auth-link {
+  font-weight: bold;
+  text-decoration: none;
+}
+
+/* ===== Light Mode Variables ===== */
+body .light-mode {
+  --accent: #c62828;
+  --accent-hover: #b71c1c;
+  --left-bg: #cfd8dc;
+  --right-bg: #ffffff;
+  --left-heading-color: #222;
+  --calendar-filter: invert(0);
+}
+body .light-mode .auth-card {
+  background-color: var(--right-bg);
+}
+body .light-mode .auth-left {
+  background-color: var(--left-bg);
+  color: #222;
+}
+body .light-mode .auth-right {
+  background-color: var(--right-bg);
+}
+body .light-mode .input-group {
+  background: #f0f0f0;
+  border: 1px solid #ccc;
+  color: #222;
+}
+body .light-mode .auth-button {
+  background-color: var(--accent);
+  color: #fff;
+}
+body .light-mode .auth-button:hover {
+  background-color: var(--accent-hover);
+}
+body .light-mode .auth-header h1,
+body .light-mode .auth-header p {
+  color: #222;
+}
+body .light-mode .auth-link {
+  color: var(--accent);
+}
+
+/* ===== Dark Mode Variables ===== */
+body .dark-mode {
+  --accent: #ef5350;
+  --accent-hover: #e53935;
+  --left-bg: linear-gradient(135deg, #0d1117, #161b22);
+  --right-bg: #1e1e1e;
+  --left-heading-color: #61dafb;
+  --calendar-filter: invert(1);
+}
+body .dark-mode .auth-card {
+  background-color: var(--right-bg);
+}
+body .dark-mode .auth-left {
+  background: var(--left-bg);
+  color: #fff;
+}
+body .dark-mode .auth-right {
+  background-color: var(--right-bg);
+}
+body .dark-mode .input-group {
+  background: #30363d;
+  border: 1px solid #444;
+  color: #fff;
+}
+body .dark-mode .auth-button {
+  background-color: var(--accent);
+  color: #fff;
+}
+body .dark-mode .auth-button:hover {
+  background-color: var(--accent-hover);
+}
+body .dark-mode .auth-header h1,
+body .dark-mode .auth-header p {
+  color: var(--left-heading-color);
+}
+body .dark-mode .auth-link {
+  color: var(--accent);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .auth-card {
+    flex-direction: column;
+    height: auto;
+  }
+  .auth-left, .auth-right {
+    width: 100%;
+    padding: 1.5rem;
+  }
+  .auth-left::before {
+    background-size: 60px 60px;
+  }
+}
+
