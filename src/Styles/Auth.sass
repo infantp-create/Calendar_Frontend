@@ -1,0 +1,269 @@
+// ===== Base Variables =====
+$font-family: "Poppins", sans-serif
+$primary-bg: linear-gradient(135deg, #e0e7ff, #f0f4f8)
+$text-color: #050505
+$card-bg: #ffffff
+$left-bg: #cfd8dc
+$left-text: #222
+$input-bg: #f0f0f0
+$input-border: #ccc
+$button-bg: #c62828
+$button-hover: #b71c1c
+$app-highlight: #4f46e5
+
+// ===== Reset =====
+*
+  margin: 0
+  padding: 0
+  box-sizing: border-box
+  font-family: $font-family
+
+body
+  background: $primary-bg
+  color: $text-color
+
+// ===== Layout =====
+.auth-page
+  display: flex
+  justify-content: center
+  align-items: center
+  min-height: 100vh
+  padding: 1.5rem
+
+  .auth-card
+    display: flex
+    border-radius: 12px
+    overflow: hidden
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3)
+    transition: all 0.3s ease
+    background-color: $card-bg
+    max-width: 1000px
+    width: 100%
+
+    .auth-left
+      flex: 1
+      display: flex
+      flex-direction: column
+      justify-content: center
+      align-items: center
+      padding: 1.5rem
+      text-align: center
+      background-color: $left-bg
+      color: $left-text
+
+      .app-name
+        font-size: 2.5rem
+        font-weight: 700
+        margin-bottom: 1rem
+        letter-spacing: 1px
+        color: $left-text
+        text-align: center
+
+        .app-highlight
+          color: $app-highlight
+
+      h1
+        font-size: 1.8rem
+        margin-bottom: 0.8rem
+
+      p
+        font-size: 0.9rem
+        opacity: 0.8
+        line-height: 1.4
+
+    .auth-right
+      flex: 1
+      display: flex
+      justify-content: center
+      align-items: center
+      padding: 1.5rem
+      background-color: $card-bg
+
+      .auth-container
+        width: 100%
+        max-width: 320px
+        display: flex
+        flex-direction: column
+        gap: 1rem
+
+        .auth-header
+          text-align: center
+          margin-bottom: 1.2rem
+
+          h1
+            font-size: 1.5rem
+            margin-bottom: 0.4rem
+
+          p
+            font-size: 0.85rem
+            opacity: 0.8
+
+        .auth-form
+          display: flex
+          flex-direction: column
+          gap: 0.8rem
+
+          .input-group
+            display: flex
+            align-items: center
+            border-radius: 8px
+            padding: 0.5rem
+            background: $input-bg
+            border: 1px solid $input-border
+
+            input
+              border: none
+              outline: none
+              flex: 1
+              padding: 0.5rem
+              background: transparent
+              font-size: 0.85rem
+
+        .auth-button
+          border: none
+          border-radius: 8px
+          padding: 0.7rem
+          font-size: 0.9rem
+          font-weight: 600
+          cursor: pointer
+          background-color: $button-bg
+          color: #fff
+          transition: all 0.3s ease
+
+          &:hover
+            background-color: $button-hover
+
+        .auth-footer
+          text-align: center
+          margin-top: 1rem
+          font-size: 0.8rem
+          .auth-link
+            font-weight: bold
+            text-decoration: none
+            color: $button-bg
+
+// ===== Responsive =====
+
+// Medium devices
+@media (max-width: 900px)
+  .auth-card
+    flex-direction: column
+    max-width: 500px
+    .auth-left, .auth-right
+      width: 100%
+      padding: 1rem
+      text-align: center
+
+    .auth-left
+      .app-name
+        font-size: 2rem
+
+// Small devices
+@media (max-width: 650px)
+  .auth-page
+    padding: 1rem
+  .auth-card
+    border-radius: 8px
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2)
+    .auth-left h1
+      font-size: 1.4rem
+    .auth-left p
+      font-size: 0.8rem
+    .auth-left
+      .app-name
+        font-size: 1.8rem
+    .auth-right .auth-container
+      max-width: 100%
+      gap: 0.8rem
+      .auth-header h1
+        font-size: 1.2rem
+      .auth-form .input-group input
+        font-size: 0.8rem
+      .auth-button
+        padding: 0.6rem
+        font-size: 0.85rem
+
+// Ultra small devices (iPhone SE and similar, <=400px)
+@media (max-width: 400px)
+  .auth-page
+    min-height: auto
+    height: auto
+    padding: 0.3rem
+    display: block
+    overflow-y: auto
+    align-items: flex-start
+
+  .auth-card
+    flex-direction: column
+    border-radius: 0
+    box-shadow: none
+    max-width: 100%
+    width: 100%
+
+    .auth-left
+      display: none
+
+    .auth-right
+      width: 100%
+      padding: 0.5rem
+
+      .auth-container
+        max-width: 100%
+        width: 100%
+        gap: 0.3rem
+
+        .auth-header
+          margin-bottom: 0.5rem
+          text-align: center
+          h1
+            font-size: 0.75rem
+            line-height: 1.1
+          p
+            font-size: 0.5rem
+            opacity: 0.85
+            line-height: 1.2
+
+        .auth-form
+          gap: 0.35rem
+          width: 100%
+
+          .form-group
+            label
+              font-size: 0.65rem
+              margin-bottom: 0.2rem
+
+          .input-group
+            border-radius: 4px
+            width: 100%
+            display: flex
+            align-items: center
+            gap: 4px
+            input
+              font-size: 0.65rem
+              padding: 0.35rem
+              width: 100%
+              border: none
+              outline: none
+            .input-icon
+              width: 18px
+              height: 18px
+
+        .auth-button
+          padding: 0.4rem
+          font-size: 0.65rem
+          border-radius: 5px
+          width: 100%
+          font-weight: 600
+
+        .auth-footer
+          margin-top: 0.4rem
+          font-size: 0.6rem
+          text-align: center
+          a
+            font-size: 0.65rem
+            text-decoration: underline
+            color: #007bff
+            cursor: pointer
+            transition: 0.3s
+            &:hover
+              text-decoration: underline

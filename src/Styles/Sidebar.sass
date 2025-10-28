@@ -1,0 +1,186 @@
+/* ===== Sidebar ===== */
+.sidebar
+  width: 380px
+  background: linear-gradient(135deg, #F7CAC9, #FDEBD0)
+  padding: 1.2rem
+  height: 100%
+  border-radius: 0
+  display: flex
+  flex-direction: column
+  font-family: 'Inter', 'Helvetica Neue', sans-serif
+  box-shadow: 4px 0 18px rgba(0,0,0,0.12)
+  overflow-y: auto
+  transition: all 0.3s ease
+
+  h2
+    font-size: 1.7rem
+    font-weight: 700
+    color: #19183B
+    letter-spacing: -0.5px
+    margin-bottom: 0.6rem
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.15)
+
+  .date-range
+    font-size: 0.95rem
+    color: #F75270
+    margin-bottom: 1.2rem
+    font-weight: 600
+    border-bottom: 2px solid #F7CAC9
+    padding-bottom: 0.6rem
+
+  .appointments-list
+    flex: 1
+    display: flex
+    flex-direction: column
+    gap: 1rem
+    padding-right: 0.5rem
+    overflow-y: auto
+
+    &::-webkit-scrollbar
+      width: 6px
+    &::-webkit-scrollbar-thumb
+      background-color: rgba(247,82,112,0.4)
+      border-radius: 3px
+
+  .appointment-item
+    background: #fff
+    border-radius: 12px
+    padding: 1rem
+    display: flex
+    flex-direction: column
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08)
+    transition: all 0.25s ease
+    cursor: pointer
+    border-left: 6px solid transparent
+
+    &:hover
+      transform: translateY(-3px)
+      box-shadow: 0 8px 20px rgba(220,20,60,0.25)
+
+    &.upcoming
+      border-color: #DC143C
+    &.ongoing
+      border-color: #F75270
+    &.completed
+      border-color: #C0C0C0
+      opacity: 0.65
+      cursor: default
+
+    .status-tag
+      display: inline-block
+      padding: 0.25rem 0.6rem
+      border-radius: 50px
+      font-size: 0.75rem
+      font-weight: 800
+      text-transform: uppercase
+      letter-spacing: 1px
+      margin-bottom: 0.6rem
+      width: fit-content
+      transition: all 0.25s ease
+
+      &.upcoming
+        background: rgba(220,20,60,0.15)
+        color: #DC143C
+        border: 1px solid #DC143C
+
+      &.ongoing
+        background: rgba(247,82,112,0.15)
+        color: #F75270
+        border: 1px solid #F75270
+        animation: pulse 1.5s infinite
+
+      &.completed
+        background: rgba(192,192,192,0.15)
+        color: #888
+        border: 1px solid #C0C0C0
+
+    .title
+      font-size: 1rem
+      font-weight: 600
+      color: #19183B
+      margin-bottom: 0.6rem
+      white-space: nowrap
+      overflow: hidden
+      text-overflow: ellipsis
+
+    .details
+      margin-bottom: 0.6rem
+      font-size: 0.85rem
+      color: #708993
+      line-height: 1.4
+
+      .organizer
+        font-weight: 600
+        color: #19183B
+        margin-bottom: 0.25rem
+
+      .participants
+        font-weight: 500
+        color: #708993
+        font-size: 0.82rem
+
+    .time
+      display: flex
+      justify-content: space-between
+      align-items: center
+      font-size: 0.9rem
+      font-weight: 500
+      color: #19183B
+      background: #FDEBD0
+      padding: 0.4rem 0.7rem
+      border-radius: 8px
+      box-shadow: inset 0 1px 3px rgba(0,0,0,0.08)
+
+      .start, .end
+        font-size: 0.85rem
+        font-weight: 600
+        color: #19183B
+
+/* Pulse effect */
+@keyframes pulse
+  0%
+    box-shadow: 0 0 0 0 rgba(247,82,112,0.4)
+  70%
+    box-shadow: 0 0 0 8px rgba(247,82,112,0)
+  100%
+    box-shadow: 0 0 0 0 rgba(247,82,112,0)
+
+/* Overlay */
+.sidebar-overlay
+  position: fixed
+  top: 0
+  left: 0
+  width: 100%
+  height: 100vh
+  background: rgba(0,0,0,0.25)
+  z-index: 10
+
+/* Responsive */
+@media screen and (max-width: 1024px)
+  .sidebar
+    width: 320px
+    padding: 1rem
+
+@media screen and (max-width: 768px)
+  .sidebar
+    position: fixed
+    top: 0
+    left: 0
+    height: 100vh
+    width: 80%
+    max-width: 340px
+    transform: translateX(-100%)
+    border-radius: 0 12px 12px 0
+    z-index: 15
+    font-size: 0.9rem
+    &.open
+      transform: translateX(0)
+
+  .appointment-item
+    .title
+      font-size: 0.95rem
+    .time
+      font-size: 0.8rem
+      flex-direction: column
+      align-items: flex-start
+      gap: 0.3rem

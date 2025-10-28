@@ -1,0 +1,286 @@
+/* ===== Variables ===== */
+$font-family: 'Inter', 'Helvetica Neue', sans-serif
+$primary-color: #DC143C
+$secondary-color: #F75270
+$past-color: #C0C0C0
+$upcoming-bg: rgba(220,20,60,0.15)
+$ongoing-bg: rgba(247,82,112,0.15)
+$past-bg: rgba(192,192,192,0.15)
+$slot-height-day: 48px
+$slot-height-week: 28px
+$appt-radius: 12px
+$transition-fast: 0.2s ease
+$transition-medium: 0.3s ease
+
+/* ===== Mixins ===== */
+=appt-block($border-color, $bg-color, $text-color)
+  border-left: 6px solid $border-color
+  background: $bg-color
+  color: $text-color
+  border-radius: $appt-radius
+  padding: 6px 10px
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1)
+  font-weight: 500
+  font-size: 0.9rem
+  transition: all $transition-fast
+  overflow: hidden
+  text-overflow: ellipsis
+  white-space: nowrap
+
+/* ===== Calendar Panel Wrapper ===== */
+.calendar-panel-wrapper
+  display: flex
+  flex-direction: column
+  flex: 1
+  width: 100%
+  background: rgba(255, 255, 255, 0.95)
+  backdrop-filter: blur(12px)
+  border-radius: 12px
+  overflow: hidden
+  box-shadow: 4px 8px 24px rgba(0,0,0,0.12)
+  font-family: $font-family
+  transition: all $transition-medium
+
+/* ===== Calendar Body ===== */
+.calendar-body-container
+  padding: 12px
+  overflow: auto
+  background: #f4f7fc
+  border-radius: 0 0 16px 16px
+
+/* ===== DAY VIEW ===== */
+.day-view
+  display: flex
+  gap: 16px
+  padding: 10px
+  background: rgba(244,247,252,0.9)
+  border-radius: 14px
+
+.time-col
+  width: 90px
+  display: flex
+  flex-direction: column
+  background: #faf1e3
+  border-radius: 12px
+  border-right: 1px solid rgba(0,0,0,0.05)
+  box-shadow: inset 0 0 4px rgba(0,0,0,0.03)
+
+  .time-slot-label
+    height: $slot-height-day
+    display: flex
+    align-items: center
+    justify-content: flex-end
+    padding-right: 10px
+    font-size: 0.85rem
+    font-weight: 500
+    color: #555
+    border-bottom: 1px solid rgba(0,0,0,0.05)
+
+    &.past
+      color: #888
+
+.slots-col
+  flex: 1
+  position: relative
+  border-radius: 12px
+  background: #fff
+  min-height: calc(#{$slot-height-day} * 24)
+  overflow: visible
+  box-shadow: inset 0 0 6px rgba(0,0,0,0.05)
+
+  .timeslot
+    height: $slot-height-day
+    border-bottom: 1px solid rgba(0,0,0,0.06)
+    transition: background $transition-fast
+
+    &:hover
+      background: rgba(220,20,60,0.05)
+      cursor: pointer
+
+    &.past
+      background: #f0f0f0
+      color: #888
+      cursor: default
+
+  .appt-block
+    position: absolute
+    left: 6px
+    right: 6px
+    border-radius: $appt-radius
+    padding: 6px 10px
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1)
+    transition: all $transition-fast
+    font-weight: 500
+
+    &.upcoming-appt
+      +appt-block($primary-color, $upcoming-bg, #19183B)
+
+    &.ongoing-appt
+      +appt-block($secondary-color, $ongoing-bg, #19183B)
+      animation: pulse 1.5s infinite
+
+    &.past-appt
+      +appt-block($past-color, $past-bg, #888)
+      opacity: 0.7
+
+    .appt-title
+      font-size: 14px
+      font-weight: 600
+      margin-bottom: 4px
+
+    .appt-time
+      font-size: 0.85rem
+      font-weight: 500
+      opacity: 0.9
+
+/* ===== WEEK VIEW ===== */
+.week-view
+  display: flex
+  flex-direction: column
+  gap: 10px
+  padding: 8px
+  background: rgba(244,247,252,0.9)
+  border-radius: 14px
+
+.week-grid-header
+  display: grid
+  grid-template-columns: 90px repeat(7, 1fr)
+  background: linear-gradient(90deg, #f7f0f5, #fdebd0)
+  border-bottom: 2px solid rgba(0,0,0,0.06)
+  font-weight: 600
+  color: #333
+  padding: 6px 0
+  border-radius: 12px 12px 0 0
+  text-align: center
+
+.week-grid-body
+  display: flex
+  overflow-x: auto
+  position: relative
+  min-height: calc(#{$slot-height-week} * 48)
+  background: #fff
+  border-radius: 0 0 12px 12px
+  box-shadow: inset 0 0 8px rgba(0,0,0,0.03)
+
+.week-col
+  position: relative
+  flex: 1
+  border-left: 1px solid rgba(0,0,0,0.05)
+  min-height: calc(#{$slot-height-week} * 48)
+  background: #fff
+
+  .week-cell
+    height: $slot-height-week
+    border-bottom: 1px solid rgba(0,0,0,0.05)
+    transition: background $transition-fast
+    &.past
+      background: #f0f0f0
+
+  .appt-block
+    position: absolute
+    left: 4px
+    right: 4px
+    border-radius: $appt-radius
+    padding: 4px 6px
+    font-size: 0.8rem
+    box-shadow: 0 3px 8px rgba(0,0,0,0.1)
+    &.upcoming-appt
+      +appt-block($primary-color, $upcoming-bg, #19183B)
+    &.past-appt
+      +appt-block($past-color, $past-bg, #888)
+      opacity: 0.8
+
+/* ===== MONTH VIEW ===== */
+.month-view
+  .month-grid
+    display: grid
+    grid-template-columns: repeat(7, 1fr)
+    gap: 8px
+
+    .month-weekday
+      text-align: center
+      font-weight: 700
+      padding: 6px 0
+      color: #333
+      background: linear-gradient(90deg, #ffffff, #fdebd0)
+      border-bottom: 2px solid rgba(0,0,0,0.06)
+      border-radius: 8px 8px 0 0
+
+    .month-cell
+      background: #fff
+      border-radius: $appt-radius
+      padding: 10px
+      min-height: 110px
+      border: 1px solid rgba(0,0,0,0.06)
+      position: relative
+      transition: all 0.25s ease
+      &:hover
+        background: rgba(247,82,112,0.05)
+        cursor: pointer
+      &.past
+        background-color: #f0f0f0
+        color: #888
+      &.muted
+        opacity: 0.6
+        background: #f7f8fa
+
+      .month-cell-top
+        display: flex
+        justify-content: flex-end
+        font-weight: 700
+        color: #19183B
+
+      .month-appts
+        margin-top: 4px
+        display: flex
+        flex-direction: column
+        gap: 6px
+
+        .month-appt
+          font-size: 0.9rem
+          padding: 6px 10px
+          font-weight: 600
+          border-radius: $appt-radius
+          overflow: hidden
+          text-overflow: ellipsis
+          white-space: nowrap
+          transition: all 0.25s ease
+          box-shadow: 0 4px 8px rgba(0,0,0,0.1), 0 6px 12px rgba(0,0,0,0.08)
+          &.upcoming
+            background: linear-gradient(135deg, $primary-color, $secondary-color)
+            border-left: 6px solid $primary-color
+            color: #fff
+          &.ongoing
+            background: $ongoing-bg
+            color: #19183B
+            animation: pulse 1.5s infinite
+          &.past
+            background: $past-bg
+            color: #888
+          &:hover
+            transform: translateY(-2px)
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15)
+
+        .more-count
+          font-size: 0.8rem
+          color: #555
+          margin-top: 4px
+
+/* Pulse effect */
+@keyframes pulse
+  0%
+    box-shadow: 0 0 0 0 rgba(247,82,112,0.4)
+  70%
+    box-shadow: 0 0 0 8px rgba(247,82,112,0)
+  100%
+    box-shadow: 0 0 0 0 rgba(247,82,112,0)
+
+/* ===== Mobile Week Fix ===== */
+@media (max-width: 768px)
+  .week-col
+    min-width: 80px
+  .appt-block
+    font-size: 0.75rem
+    padding: 4px 6px
+  .time-col
+    width: 50px

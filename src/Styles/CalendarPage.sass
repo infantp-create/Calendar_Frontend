@@ -1,0 +1,67 @@
+/* CalendarPage.sass */
+.calendar-page
+  display: flex
+  flex-direction: column
+  height: 100vh
+  width: 100%
+  font-family: 'Inter', sans-serif
+
+.main-content
+  display: flex
+  flex: 1
+  position: relative
+  overflow: hidden
+
+/* Desktop sidebar */
+// .sidebar-container
+//   max-width: 450px
+//   background-color: rgba(255, 255, 255, 1)
+//   color: #fff
+//   border-right: 1px solid #2C2F35
+//   padding: 0px
+//   transition: all 0.3s ease
+
+/* Mobile sidebar overlay */
+.sidebar-overlay
+  position: fixed
+  top: 0
+  left: 0
+  height: 100vh
+  width: 100vw
+  
+  display: flex
+  z-index: 50
+  animation: fadeIn 0.3s
+
+  > .sidebar
+    background-color: #1C1F24
+    width: 350px
+    max-width: 80%
+    padding: rem
+    height: 100%
+    transform: translateX(0)
+    animation: slideIn 0.3s forwards
+
+/* Animations */
+@keyframes slideIn
+  0%
+    transform: translateX(-100%)
+  100%
+    transform: translateX(0)
+
+@keyframes fadeIn
+  from
+    opacity: 0
+  to
+    opacity: 1
+
+/* Hide desktop sidebar on mobile */
+.mobile-only
+  display: none
+
+@media screen and (max-width: 1024px)
+  .desktop-only
+    display: none
+
+  .mobile-only
+    display: flex

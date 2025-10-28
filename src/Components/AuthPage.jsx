@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Mail, Lock, User } from "react-feather";
 import { useNavigate } from "react-router-dom"; // ✅ import
-import "../Styles/Auth.css";
+import "../Styles/Auth.sass";
+
 
 function AuthPage({ darkMode, toggleTheme }) {
   const [isLogin, setIsLogin] = useState(true);
@@ -94,6 +95,11 @@ function AuthPage({ darkMode, toggleTheme }) {
       <div className="auth-card">
         {/* Left Side */}
         <div className="auth-left">
+
+          <div className="app-name">
+            <span className="app-highlight">Schedule</span>Pro
+          </div>
+          
           <h1>{isLogin ? "Welcome Back" : "Create Account"}</h1>
           <p>
             {isLogin
@@ -104,9 +110,6 @@ function AuthPage({ darkMode, toggleTheme }) {
 
         {/* Right Side */}
         <div className="auth-right">
-          <button className="theme-toggle" onClick={toggleTheme}>
-            {darkMode ? "☀️" : "🌙"}
-          </button>
 
           <div className="auth-container">
             <div className="auth-header">

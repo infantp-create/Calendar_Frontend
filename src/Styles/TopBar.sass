@@ -1,0 +1,121 @@
+/* ===== Topbar (Professional & Branded) ===== */
+.topbar
+  display: flex
+  justify-content: space-between
+  align-items: center
+  padding: 0.85rem 1.8rem
+  background: #DC143C // brand crimson
+  border-bottom: 1px solid rgba(0,0,0,0.1)
+  font-family: 'Inter', sans-serif
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12)
+  position: sticky
+  top: 0
+  z-index: 20
+
+/* ===== Left Section (App Name Logo Style) ===== */
+.topbar-left
+  display: flex
+  align-items: center
+
+  .app-name
+    font-family: 'Playfair Display', serif // modern professional serif
+    font-size: 1.8rem
+    font-weight: 700
+    color: #FDEBD0 // cream for contrast
+    letter-spacing: 2px
+    white-space: nowrap
+    user-select: none
+    transition: color 0.25s ease
+    &:hover
+      color: #F7CAC9 // soft pink on hover
+    @media (max-width: 1024px)
+      font-size: 1.5rem
+    @media (max-width: 768px)
+      font-size: 1.2rem
+      text-align: center
+      margin-left: 0
+
+/* ===== Right Section (User Info) ===== */
+.topbar-right
+  display: flex
+  align-items: center
+  gap: 0.75rem
+  font-weight: 600
+  color: #FDEBD0
+  cursor: pointer
+  position: relative
+
+  .user-icon
+    color: #F7CAC9
+    font-size: 1.4rem
+    transition: color 0.25s ease, transform 0.2s ease
+    &:hover
+      color: #FDEBD0
+      transform: scale(1.05)
+
+  .username
+    font-size: 1rem
+    color: #FDEBD0
+    font-weight: 600
+    letter-spacing: 0.4px
+
+/* ===== Logout Modal ===== */
+.logout-modal-overlay
+  position: fixed
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  background: rgba(0,0,0,0.5)
+  display: flex
+  align-items: center
+  justify-content: center
+  z-index: 1000
+
+.logout-modal
+  background: #fff
+  padding: 24px
+  border-radius: 12px
+  min-width: 280px
+  box-shadow: 0 6px 16px rgba(0,0,0,0.25)
+  text-align: center
+  transition: all 0.25s ease
+
+  h3
+    margin-bottom: 12px
+    font-size: 1.2rem
+    color: #19183B
+
+  p
+    margin-bottom: 20px
+    font-size: 0.95rem
+    color: #555
+
+.logout-buttons
+  display: flex
+  justify-content: space-around
+  gap: 0.5rem
+
+  .cancel-btn
+    background: #e0e0e0
+    border: none
+    padding: 0.5rem 1rem
+    border-radius: 8px
+    cursor: pointer
+    font-weight: 600
+    transition: background 0.2s ease
+    &:hover
+      background: #d5d5d5
+
+  .logout-btn
+    background: #DC143C
+    color: #fff
+    border: none
+    padding: 0.5rem 1rem
+    border-radius: 8px
+    cursor: pointer
+    font-weight: 600
+    transition: all 0.2s ease
+    &:hover
+      background: #F75270
+      transform: translateY(-1px)

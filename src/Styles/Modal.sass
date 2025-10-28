@@ -1,0 +1,258 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Playfair+Display:wght@400;700&display=swap')
+
+.modal-backdrop
+  position: fixed
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  background: rgba(0, 0, 0, 0.35)
+  display: flex
+  justify-content: center
+  align-items: center
+  z-index: 1000
+  padding: 0.5rem
+
+.modal-card
+  background: #f0f8ff
+  border-radius: 16px
+  width: 520px
+  max-width: 95vw
+  max-height: 90vh
+  overflow-y: auto
+  overflow-x: hidden
+  padding: 1.5rem 1.8rem
+  font-family: 'Poppins', sans-serif
+  box-shadow: 0 12px 28px rgba(0,0,0,0.15)
+  display: flex
+  flex-direction: column
+  gap: 0.75rem
+  position: relative
+  animation: scaleIn 0.22s ease forwards
+
+  &::-webkit-scrollbar
+    width: 8px
+  &::-webkit-scrollbar-thumb
+    background: rgba(11, 58, 102, 0.3)
+    border-radius: 4px
+  &::-webkit-scrollbar-track
+    background: #e3f2ff
+
+h3
+  text-align: center
+  color: #062d1f
+  font-family: 'Playfair Display', serif
+  font-weight: 700
+  font-size: 1.55rem
+  margin-bottom: 0.5rem
+
+label
+  font-size: 0.88rem
+  color: #0b3a66
+  font-weight: 600
+  margin-bottom: 0.25rem
+  display: block
+
+input, select, textarea
+  padding: 0.55rem 0.75rem
+  border-radius: 10px
+  border: 1px solid #a9d6ff
+  background: #f7fbff
+  font-size: 0.9rem
+  font-family: 'Poppins', sans-serif
+  transition: all 0.25s ease
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.04)
+
+  &:focus
+    border-color: #0b3a66
+    box-shadow: 0 0 6px rgba(11,58,102,0.25)
+    outline: none
+
+textarea
+  resize: vertical
+  min-height: 60px
+  width: 100%
+  box-shadow: inset 0 2px 5px rgba(0,0,0,0.05)
+
+.description-counter
+  font-size: 0.7rem
+  color: #0b3a66
+  margin-top: -0.25rem
+  margin-bottom: 0.3rem
+  align-self: flex-end
+
+.input-group
+  display: flex
+  flex-direction: column
+  gap: 0.25rem
+  padding: 0.35rem 0.45rem
+  border-radius: 15px
+  border: 1px solid #c8e1ff
+  background: #f0f8ff
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.05)
+  transition: all 0.2s ease
+
+
+  &:focus-within
+    border-color: #0b3a66
+    box-shadow: 0 0 5px rgba(11,58,102,0.18)
+
+.guest-tags
+  display: flex
+  flex-wrap: wrap
+  gap: 0.35rem
+  width: 100%
+
+  input
+    flex: 1
+    min-width: 100px
+    border: none
+    background: transparent
+    padding: 0.45rem 0.5rem
+    &:focus
+      outline: none
+
+.guest-tag
+  background: linear-gradient(90deg, #85fdbb, #4cb87d)
+  color: #062d1f
+  font-weight: 500
+  padding: 0.35rem 0.5rem
+  border-radius: 8px
+  display: flex
+  align-items: center
+
+  button
+    margin-left: 0.25rem
+    border: none
+    background: transparent
+    font-weight: 700
+    cursor: pointer
+    color: #062d1f
+    transition: all 0.2s ease
+
+    &:hover
+      color: #ff4d4d
+
+.guest-dropdown
+  max-height: 140px
+  display: flex
+  flex-wrap: wrap
+  gap: 5px
+  margin-top: 6px
+  overflow-y: auto
+  background: #f7fbff
+  border: 1px solid #c8e1ff
+  border-radius: 8px
+
+  .guest-suggestion
+    padding: 6px 12px
+    background: #f0f0f0
+    border-radius: 20px
+    cursor: pointer
+    transition: background 0.2s
+    &:hover
+      background: #d0d0d0
+
+  div
+    padding: 0.45rem 0.6rem
+    cursor: pointer
+    transition: background 0.2s ease
+
+    &:hover
+      background: #dbe9ff
+
+.date-group,
+.time-group
+  display: flex
+  flex-wrap: wrap
+  gap: 0.5rem
+
+  div
+    flex: 1 1 100px
+    display: flex
+    flex-direction: column
+    gap: 0.2rem
+    width: 100%
+
+  input[type="number"],
+  select
+    width: 70%
+    text-align: center
+    padding: 0.5rem
+    border-radius: 12px
+    border: 1px solid #a9d6ff
+    background: #f7fbff
+    box-shadow: inset 0 1px 4px rgba(0,0,0,0.05)
+    transition: all 0.2s ease
+
+    &:focus
+      border-color: #0b3a66
+      box-shadow: 0 0 5px rgba(11,58,102,0.2)
+
+.day-selector
+  display: flex
+  flex-wrap: wrap
+  gap: 0.35rem
+  margin-top: 0.3rem
+
+  button
+    flex: 1 1 36px
+    min-width: 36px
+    padding: 0.38rem
+    border-radius: 8px
+    border: 1px solid #a9d6ff
+    background: #f0f8ff
+    color: #062d1f
+    font-weight: 500
+    cursor: pointer
+    transition: all 0.2s ease
+    text-align: center
+
+    &:hover
+      filter: brightness(0.94)
+
+    &.active
+      background: #062d1f
+      color: #fff
+      border-color: #062d1f
+
+.modal-actions
+  display: flex
+  justify-content: flex-end
+  gap: 0.65rem
+  margin-top: 0.8rem
+  flex-wrap: wrap
+
+  button
+    padding: 0.48rem 1rem
+    font-weight: 500
+    border-radius: 8px
+    cursor: pointer
+    border: none
+    transition: all 0.2s ease
+
+    &.btn-primary
+      background: linear-gradient(90deg, #85fdbb, #4cb87d)
+      color: #062d1f
+      &:hover
+        filter: brightness(0.88)
+
+    &.btn-secondary
+      background: #dbe9ff
+      color: #062d1f
+      &:hover
+        filter: brightness(0.95)
+
+    &.btn-danger
+      background: #ff4d4d
+      color: #fff
+      &:hover
+        filter: brightness(0.88)
+
+@keyframes scaleIn
+  from
+    opacity: 0
+    transform: scale(0.92)
+  to
+    opacity: 1
+    transform: scale(1)
